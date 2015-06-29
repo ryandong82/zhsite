@@ -10,8 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::model('article', 'Article');
+Route::model('article', 'App\Article');
+Route::model('teacher', 'App\Teacher');
+Route::model('teacher_group', 'App\TeacherGroup');
+
+Route::get('/teacherpage', 'TeacherPageController@index');
+Route::get('/contact', 'ContactController@index');
+Route::get('/about', 'AboutController@index');
+Route::get('/index', 'IndexController@index');
 Route::get('/', 'IndexController@index');
+Route::get('/admin', 'AdminController@index');
+//Route::get('/admin/article', 'ArticleController@index');
+//Route::controller('/admin/article', 'ArticleController');
 
 
-Route::resource('articles', 'ArticlesController');
+Route::resource('articles', 'ArticleController');
+Route::resource('teachers', 'TeacherController');

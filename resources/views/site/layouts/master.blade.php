@@ -98,19 +98,19 @@
                         <a href="../" class='color'>首页</a>
                     </li>
                     <li>
-                        <a href="./about.php" class='color'>学院介绍</a>
+                        <a href="about" class='color'>学院介绍</a>
                     </li>
                     <li>
                         <a href="./courses-10-1.html" class='color'>课程介绍</a>
                     </li>
                     <li>
-                        <a href="./teachers.php" class='color'>师资介绍</a>
+                        <a href="teacherpage" class='color'>师资介绍</a>
                     </li>
                     <li>
                         <a href="./about-44.html" class='color'>合作客户</a>
                     </li>
                     <li>
-                        <a href="./contact.php" class='color'>联系我们</a>
+                        <a href="contact" class='color'>联系我们</a>
                     </li>
                     <!-- <li><a href="javascript:void(0);" class="fuzzy99 hidden-xs" target="_self">联系我们</a></li> -->
                     <!-- <li><a href="javascript:void(0);" onclick="boya_application()" target="_self">报名</a></li> -->
@@ -144,8 +144,8 @@
 
 <footer>
     <div class='container text-center text-muted'>
-        <p><a href="http://www.boyaceo.com/about-1.html">关于我们</a>&nbsp;｜&nbsp;<a
-                    href="http://www.boyaceo.com/about-46.html">联系我们</a>&nbsp;｜&nbsp;<a
+        <p><a href="about">关于我们</a>&nbsp;｜&nbsp;<a
+                    href="contact">联系我们</a>&nbsp;｜&nbsp;<a
                     href="http://www.boyaceo.com/list-32-1.html">友情链接</a>&nbsp;｜&nbsp;<a
                     href="http://wpa.qq.com/msgrd?V=1&uin=2355899908">意见反馈</a>&nbsp;｜&nbsp;<a href="">网站地图</a></p>
 

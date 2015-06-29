@@ -16,12 +16,12 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
-            $table->dateTime('create_time');
-            $table->integer('category');
+            $table->unsignedInteger('category');
             $table->string('keywords');
             $table->integer('visible');
-            $table->foreign('category')->references('id')->on('article_categories');
+            //$table->foreign('category')->references('id')->on('article_categories');
             $table->timestamps();
+
         });
     }
 
