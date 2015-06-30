@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Article;
 use App\ArticleCategory;
+use App\UploadedRes;
+use App\Helper\ImageSplitter;
+use App\Helper\MyUtil;
 
 class ArticleController extends Controller
 {
@@ -32,7 +34,7 @@ class ArticleController extends Controller
     {
         //
         $categories = ArticleCategory::all();
-        return response()->view('admin.articleCreate', array('categories'=>$categories));
+        return response()->view('admin.articleCreation', array('categories'=>$categories));
     }
 
     /**
@@ -40,9 +42,24 @@ class ArticleController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store($data)
     {
         //
+        $article = new Article();
+        $splitter = new ImageSplitter($data['article_content']);
+        $res = new UploadedRes();
+
+        $img = $splitter->getImageContent();
+        $res->filename = MyUtil::save_file($img);
+        $res->mime = $splitter->getMime();
+        $res->save();
+        $article->title = $data['article_title'];
+        $article->category = $data['article_category'];
+        $article->content = $splitter->getPlainContent($res->id);
+        $article->save();
+
+        return response()->json(array("success" => "1", "new_id" => $res->id), 200,
+            array('Content-Type:text/json;charset=UTF-8'));
     }
 
     /**

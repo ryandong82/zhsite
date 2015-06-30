@@ -33,7 +33,7 @@
                     <option value="-1">==选择分类==
                     </option>
                     @foreach($categories as $category)
-                        <option value="{{$category['id']}}">{{$category['cate_name']}}
+                        <option value="{{$category['id']}}">{{$category['category_name']}}
                         </option>
                     @endforeach
 
@@ -161,7 +161,7 @@
             form_data.append("article_title", $("#article_title").val());
             form_data.append("article_content", $("#editor").cleanHtml());
             $.ajax({
-                url: "new_article.php",
+                url: "{{URL::route('articles.store')}}",
                 type: "POST",
                 data: form_data,
                 processData: false,  // 告诉jQuery不要去处理发送的数据

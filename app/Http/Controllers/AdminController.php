@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Helper\ImageSplitter;
 
 class AdminController extends Controller
 {
@@ -17,6 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         //
+        $aa = new ImageSplitter('afaf');
         return response()->view('admin.index');
     }
 
