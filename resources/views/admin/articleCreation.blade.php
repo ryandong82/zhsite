@@ -160,6 +160,9 @@
             form_data.append("article_category", $("#article_category").val());
             form_data.append("article_title", $("#article_title").val());
             form_data.append("article_content", $("#editor").cleanHtml());
+            form_data.append("_token", "{{csrf_token()}}");
+            //{{session()->token()}}
+            //{{session()->getId()}}
             $.ajax({
                 url: "{{URL::route('articles.store')}}",
                 type: "POST",

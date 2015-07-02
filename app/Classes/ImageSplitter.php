@@ -61,7 +61,7 @@ class ImageSplitter
             $content, $this->matches);
         if ($this->is_matched) {
             $this->mime_type = $this->matches['contenttype'];
-            $this->$img = base64_decode($this->matches['content']);
+            $this->img = base64_decode($this->matches['content']);
         }
     }
 }

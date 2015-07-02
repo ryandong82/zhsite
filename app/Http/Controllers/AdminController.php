@@ -18,8 +18,17 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $aa = new ImageSplitter('afaf');
-        return response()->view('admin.index');
+        //$aa = new ImageSplitter('afaf');
+        //header('Content-Type', 'text/html;encode=UTF-8');
+//        return ->header('Content-Type', 'text/html;encode=UTF-8')
+//            ->withCookie('name', 'value');
+        //return view('admin.index')->withCookie('name', 'value');
+        //$view = view('admin.index');
+        //$response = new \Illuminate\Http\Response($view);
+
+        //return $response->header('Content-Type', 'text/html;charset=UTF-8');
+        //return $view;
+        return view('admin.index');
     }
 
     /**

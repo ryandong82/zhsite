@@ -9,7 +9,9 @@ use App\Article;
 use App\ArticleCategory;
 use App\UploadedRes;
 use App\Helper\ImageSplitter;
+use Illuminate\View\View;
 use App\Helper\MyUtil;
+use Illuminate\Http\Response;
 
 class ArticleController extends Controller
 {
@@ -33,8 +35,11 @@ class ArticleController extends Controller
     public function create()
     {
         //
+
         $categories = ArticleCategory::all();
-        return response()->view('admin.articleCreation', array('categories'=>$categories));
+        $resp = \View::make('admin.articleCreation', array('categories'=>$categories));
+        headers_sent();
+        return $resp;
     }
 
     /**
@@ -57,6 +62,9 @@ class ArticleController extends Controller
         $article->category = $data['article_category'];
         $article->content = $splitter->getPlainContent($res->id);
         $article->save();
+
+//        return response()->json(array("success" => "1", "new_id" => 1), 200,
+//            array('Content-Type:text/json;charset=UTF-8'));
 
         return response()->json(array("success" => "1", "new_id" => $res->id), 200,
             array('Content-Type:text/json;charset=UTF-8'));
