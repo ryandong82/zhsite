@@ -1,7 +1,6 @@
 @extends('site.layouts.master')
 
 @section('title', '中和师资')
-@endsection
 
 @section('mainbody')
     <!-- 导航下色条 start-->

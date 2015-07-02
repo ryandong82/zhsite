@@ -79,11 +79,6 @@
 @section("scripts")
     <script src="statics/plugin/jquery-2.1.3.min.js"></script>
     <script src="statics/plugin/Bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $.ready(function () {
-            $("#@yield('li_name')").addClass('nav-active');
-        });
-    </script>
 @show
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helper;
+namespace App\Classes;
 
 class MyUtil
 {
@@ -10,7 +10,7 @@ class MyUtil
 //$result = $pdo->query("select * from articles a join article_category b on a.category = b.Id");
     public static function save_file($_file)
     {
-        $photo_file = gen_file_name();
+        $photo_file = MyUtil::gen_file_name();
         $new_file = $_SERVER['DOCUMENT_ROOT'] . "/statics/images/upload/$photo_file";
         if (file_put_contents($new_file, $_file)) {
             $img_type = exif_imagetype($new_file);

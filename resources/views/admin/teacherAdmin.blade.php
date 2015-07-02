@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 
 @section('title', '师资')
-@endsection
 
 @section('styles')
     @parent
@@ -471,6 +470,3 @@
         ;
     </script>
 @stop
-
-@section("li_name", "li_teacher")
-@endsection

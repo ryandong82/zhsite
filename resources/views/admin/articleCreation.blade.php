@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 
 @section('title', '新建文章')
-@endsection
 
 @section('styles')
     <link rel="stylesheet" href="statics/css/prettify.css">
@@ -172,7 +171,7 @@
                 dataType: "json",
                 success: function (_data) {
                     if (_data.success == 1) {
-                        location = "article_list.php";
+                        location = "{{URL::route('articles.index')}}";
                     }
                 },
                 error: function (_data) {

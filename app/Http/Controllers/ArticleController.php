@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Article;
 use App\ArticleCategory;
 use App\UploadedRes;
-use App\Helper\ImageSplitter;
+use App\Classes\ImageSplitter;
 use Illuminate\View\View;
-use App\Helper\MyUtil;
+use App\Classes\MyUtil;
 use Illuminate\Http\Response;
 
 class ArticleController extends Controller
@@ -37,8 +37,7 @@ class ArticleController extends Controller
         //
 
         $categories = ArticleCategory::all();
-        $resp = \View::make('admin.articleCreation', array('categories'=>$categories));
-        headers_sent();
+        $resp = view('admin.articleCreation', array('categories'=>$categories));
         return $resp;
     }
 
@@ -47,19 +46,19 @@ class ArticleController extends Controller
      *
      * @return Response
      */
-    public function store($data)
+    public function store(Request $request)
     {
         //
         $article = new Article();
-        $splitter = new ImageSplitter($data['article_content']);
+        $splitter = new ImageSplitter($request->request->get('article_content'));
         $res = new UploadedRes();
 
         $img = $splitter->getImageContent();
         $res->filename = MyUtil::save_file($img);
         $res->mime = $splitter->getMime();
         $res->save();
-        $article->title = $data['article_title'];
-        $article->category = $data['article_category'];
+        $article->title = $request->request->get('article_title');
+        $article->category = $request->request->get('article_category');
         $article->content = $splitter->getPlainContent($res->id);
         $article->save();
 

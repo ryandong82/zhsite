@@ -1,7 +1,6 @@
 @extends('site.layouts.master')
 
 @section('title', '首页')
-@endsection
 <!-- 轮播图 start-->
 @section('mainbody')
 <div class="container" id="slider">

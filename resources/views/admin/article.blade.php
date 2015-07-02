@@ -1,7 +1,6 @@
 @extends('admin.layouts.master')
 
 @section('title', '文章')
-@endsection
 
 @section('styles')
     @parent
@@ -31,7 +30,7 @@
                         {{$article["created_at"]}}
                     </td>
                     <td>
-                        {{$article->category()['cate_name']}}
+                        {{$article->category()->getResults()["category_name"]}}
                     </td>
                 </tr>
             @endforeach
@@ -40,6 +39,3 @@
     </div>
 
 @stop
-
-@section("li_name", "li_article")
-@endsection
