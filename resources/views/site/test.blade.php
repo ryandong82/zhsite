@@ -1,1 +1,3 @@
-<h1>{{$theview_data->find(1)}}</h1>
+@foreach($teachers as $teacher)
+    {{$teacher->pic()->getResults()}}
+    @endforeach

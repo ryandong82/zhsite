@@ -101,16 +101,16 @@
                 <div class='single-tab text-muted'>
                     <span class="caret"></span>
                     <h4>
-                        <a href="article_categories.php?cate_id={{$article['category']}}"
+                        <a href="{{URL::route("site.category", array('categoryId'=>$category, 'pageNo'=>1))}}"
                            class="blue">{{$article->category()->getResults()['category_name']}}</a>
                     </h4>
 
                     <h3 class="h5 title">
-                        <a href="show_article.php?article_id={{$article['id']}}">{{$article['title']}}</a>
+                        <a href="{{URL::route("site.article", $article['id'])}}">{{$article['title']}}</a>
                     </h3>
 
                     <div class="text-center">
-                        <a href="show_article.php?article_id={{$article['id']}}">
+                        <a href="{{URL::route("site.article", $article['id'])}}">
                             <img data-original="http://www.boyaceo.com/uploadfile/2015/0204/20150204032221168.jpg"
                                  class='lazy content-img'></a>
                     </div>
@@ -120,6 +120,7 @@
 
                     <p class="single-tab-bottom">
                         <span class="glyphicon glyphicon-time"></span>
+                        {{$article['created_at']}}
                       </p>
                 </div>
             </dd>
@@ -134,24 +135,24 @@
     <!-- 选项卡内容［热点］ end-->
     <!-- 选项卡内容［＋＋］ start-->
 
-    @foreach($categories as $categoriy)
+    @foreach($categories as $category)
     <div class="tab-list hidden">
         <dl class="row">
-            @foreach($categoriy->articles()->getResults() as $article)
+            @foreach($category->articles()->getResults() as $article)
             <dd class="col-boya-2 col-sm-4  col-md-3 col-xs-12">
                 <div class='single-tab text-muted'>
                     <span class="caret"></span>
                     <h4>
-                        <a href="article_categories.php?cate_id={{$categoriy['id']}}"
-                           class="blue">{{$categoriy['cate_name']}}</a>
+                        <a href="{{URL::route("site.category", array('categoryId'=>$category, 'pageNo'=>1))}}"
+                           class="blue">{{$article->category()->getResults()['category_name']}}</a>
                     </h4>
 
                     <h3 class="h5 title">
-                        <a href="show_article.php?article_id={{$article['id']}}">{{$article['title']}}</a>
+                        <a href="{{URL::route("site.article", $article['id'])}}">{{$article['title']}}</a>
                     </h3>
 
                     <div class="text-center">
-                        <a href="show_article.php?article_id={{$article['id']}}">
+                        <a href="{{URL::route("site.article", $article['id'])}}">
                             <img
                                     data-original="http://www.boyaceo.com/uploadfile/2015/0204/20150204032221168.jpg"
                                     class='lazy content-img'></a>
@@ -161,7 +162,7 @@
 
                     <p class="single-tab-bottom">
                         <span class="glyphicon glyphicon-time"></span>
-                        $arr_article['create_time']</p>
+                        {{$article['created_at']}}</p>
                 </div>
             </dd>
             @endforeach

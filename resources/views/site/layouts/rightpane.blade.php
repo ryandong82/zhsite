@@ -95,8 +95,8 @@
                     @foreach($teachers as $teacher)
                     <div class="teacher-single col-xs-6">
                         <a href="./teacher.php?id=$arr_result[id]" class="thumbnail">
-                            <img class='lazy' src="./statics/images/boya/t-face.jpg"
-                                 data-original="./statics/images/upload/{{$teacher->pic()['file_name']}}"
+                            <img class='lazy' src="statics/images/boya/t-face.jpg"
+                                 data-original="statics/images/upload/{{$teacher->pic()->getResults()['file_name']}}"
                                  style="width:80px!important;width:115px!important;"></a>
 
                         <p class='text-center'>

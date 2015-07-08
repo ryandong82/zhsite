@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="/" target="_self">
     <title>
         中和商学院 - @yield('title')
     </title>
@@ -39,6 +40,7 @@
     </script>
 </head>
 <body>
+
 <!-- 顶部 start-->
 <!-- 顶部 start-->
 <!--header>
@@ -162,17 +164,5 @@
 <script type="text/javascript" src="./statics/plugin/Bootstrap/js/bootstrap.min.js?version=3.3.2"></script>
 <script type="text/javascript" src="./statics/plugin/jquery.lazyload.min.js?version=1.9.1"></script>
 <script type="text/javascript" src="./statics/js/boya/home.js"></script>
-<!-- 百度统计 -->
-<!--div style="visibility:hidden;"><script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb24ef883c2319a400b1e1326a3d33522' type='text/javascript'%3E%3C/script%3E"));
-</script>
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F60957f7a7babf0747e33819add6c8cc6' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-
-</div-->
-
 </body>
 </html>
