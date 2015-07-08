@@ -54,6 +54,9 @@ class TeacherPageController extends Controller
     public function show($id)
     {
         //
+        $teacher = Teacher::find($id);
+        $teachers = Teacher::all();
+        return response()->view('site.teacher', array('teacher'=>$teacher, 'teachers'=>$teachers));
     }
 
     /**

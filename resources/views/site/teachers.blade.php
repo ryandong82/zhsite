@@ -27,7 +27,8 @@
                         <li>
                             <a href="./">首页</a>
                         </li>
-                        <li class="active">师资</li>
+                        <li class="active">
+                            <a href="{{URL::route("site.teachers")}}">师资</a> &gt;</li>
                     </ol>
                     <h3 class="title">中和师资</h3>
                     <!-- 新闻列表 start-->
@@ -49,20 +50,20 @@
                             <div class="tab-pane fade active in" id="all">
                                 @foreach($all_teachers as $teacher)
                                 <div class="col-sm-12 col-md-6 col-lg-4 teacher-single clearfix">
-                                    <a href="./teacher.php?Id={{$teacher['id']}}" class="thumbnail col-xs-5"> <img
+                                    <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="thumbnail col-xs-5"> <img
                                                 class='lazy'
-                                                src="./statics/images/boya/t-face.jpg"
-                                                data-original="./statics/images/upload/{{$teacher->pic()['file_name']}}"
+                                                src="statics/images/boya/t-face.jpg"
+                                                data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
                                                 width="115" height="165"
                                                 style='height:164px;'></a>
 
                                     <div class="col-xs-7">
-                                        <h3 class="h4"><a href="./teacher.php?Id={{$teacher['id']}}"
-                                                          class="blue">{{$teacher['teacher_name']}}</a></h3>
+                                        <h3 class="h4"><a href="{{URL::route("site.teacher", $teacher['id'])}}"
+                                                          class="blue">{{$teacher['name']}}</a></h3>
 
                                         <p class="text-muted">{{$teacher['descript']}}</p>
                                     </div>
-                                    <a href="./teacher.php?Id={{$teacher['id']}}"
+                                    <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="btn btn-default btn-xs"> <span
                                                 class="glyphicon glyphicon-user text-warning"></span> <span
                                                 class="text-warning">个人主页</span></a>
@@ -84,22 +85,22 @@
                             <div class="tab-pane fade" id="group-{{$group['id']}}">
                                 @foreach($group->teachers() as $teacher)
                                 <div class="col-sm-12 col-md-6 col-lg-4 teacher-single clearfix">
-                                    <a href="./teacher.php?id={{$teacher['id']}}"
+                                    <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="thumbnail col-xs-5"> <img class="lazy"
-                                                                        src="./statics/images/boya/t-face.jpg"
-                                                                        data-original="./statics/images/upload/{{$teacher->pic()['filename']}}"
+                                                                        src="statics/images/boya/t-face.jpg"
+                                                                        data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
                                                                         width="115"
                                                                         height="165"
                                                                         style="height:164px;"></a>
 
                                     <div class="col-xs-7">
-                                        <h3 class="h4"><a href="./teacher.php?id={{$teacher['id']}}"
+                                        <h3 class="h4"><a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                                           class="blue">{{$teacher['name']}}</a>
                                         </h3>
 
                                         <p class="text-muted">{{$teacher['descript']}}</p>
                                     </div>
-                                    <a href="./teacher.php?id={{$teacher['id']}}"
+                                    <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="btn btn-default btn-xs"> <span
                                                 class="glyphicon glyphicon-user text-warning"></span> <span
                                                 class="text-warning">个人主页</span></a>

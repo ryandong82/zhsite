@@ -1,9 +1,14 @@
 @extends('site.layouts.sublevel')
 
 @section('title', '关于我们')
-@section('subtitle', '关于我们')
 @section('titlelink', 'about')
 @section('article')
+    <h1 class="text-center h3">关于我们</h1>
+    <!-- 时间 -->
+    <p class="small text-muted text-center article_time">
+        <small></small>
+    </p>
+
     <article>
         <div class="article_content">
             <div align="center"><img alt="" src="./statics/images/boya/boya_logo.png"/>&nbsp; &nbsp;

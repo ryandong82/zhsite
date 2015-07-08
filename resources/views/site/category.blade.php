@@ -1,8 +1,11 @@
-@extends('site.layouts.articlesInCategory')
+@extends('site.layouts.sublevel')
 
 @section('title', $category["category_name"])
 @section('titlelink', URL::route("site.category", $category["id"]))
-@section("articleList")
+@section("articler")
+    <!-- 标题 -->
+    <h3 class="title">{{$category["category_name"]}}</h3>
+
     <div class="list-group article_list">
         @foreach($articles as $article)
             <a href="{{URL::route("site.article", $article["id"])}}" class="list-group-item btn-tool" title=""  data-toggle="tooltip" data-placement="top" title="" data-original-title="《论中国》，作者是美国前国务卿基辛格，他将自己对中国的研究和发展做了很好的阐述，并且有很多珍贵的...">

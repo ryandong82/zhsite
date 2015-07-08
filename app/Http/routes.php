@@ -14,7 +14,8 @@ Route::model('article', 'App\Article');
 Route::model('teacher', 'App\Teacher');
 Route::model('teacher_group', 'App\TeacherGroup');
 
-Route::get('/teacherpage', 'TeacherPageController@index');
+Route::get('/teacherpage', array('as'=>'site.teachers', 'uses'=>'TeacherPageController@index'));
+Route::get('/teacher-{id}.html', array('as'=>'site.teacher', 'uses'=>'TeacherPageController@show'));
 Route::get('/articlepage/article-{articleId}.html', array('as' => 'site.article', 'uses'=> 'ArticleSiteController@show'));
 Route::get('/category/category-{categoryId}-{pageNo}.html', array('as' => 'site.category', 'uses'=> 'ArticleCategoryController@show'));
 Route::get('/contact', 'ContactController@index');

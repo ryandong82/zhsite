@@ -29,13 +29,8 @@
                         <li class="active"><a href="@yield('titlelink')">@yield('title')</a> &gt;</li>
                     </ol>
                     <!-- 标题 -->
-                    <h1 class="text-center h3">@yield('subtitle')</h1>
-                    <!-- 时间 -->
-                    <p class="small text-muted text-center article_time">
-                        <small></small>
-                    </p>
-                    <!-- 内容 -->
                     @section('article')
+                    <!-- 内容 -->
                     @show
                     <!-- 分享 start -->
                     <div class="bdsharebuttonbox pull-right">

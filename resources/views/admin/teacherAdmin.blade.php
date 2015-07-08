@@ -128,12 +128,12 @@
                     <td>
                         <img class='lazy'
                              src="../statics/images/boya/t-face.jpg"
-                             data-original="../statics/images/upload/{{$teacher->pic()['file_name']}}"
+                             data-original="../statics/images/upload/{{$teacher->pic()->getResults()['file_name']}}"
                              width="115"
                              height="165"
                              style='height:164px;'></td>
                     <td>
-                        {{$teacher->group()['name']}}
+                        {{$teacher->group()->getResults()['name']}}
                     </td>
                     <td>
                         {{$teacher['ord_no']}}
@@ -233,8 +233,8 @@
                                         $tmptd.text(data.teacher_name);
                                         $ele_tr.append($tmptd);
 
-                                        $tmptd = $('<td><img class="lazy" src="../statics/images/boya/t-face.jpg"'
-                                        + ' data-original="../statics/images/upload/'
+                                        $tmptd = $('<td><img class="lazy" src="statics/images/boya/t-face.jpg"'
+                                        + ' data-original="statics/images/upload/'
                                         + data.photo_file + '" width="115" height="165" style="height:164px;"></td>');
                                         $tmptd.children().eq(0).lazyload();
                                         $ele_tr.append($tmptd);
@@ -399,7 +399,7 @@
 
 
         function prepareTeacher(teacherId) {
-            $.get("get_teacher.php", {teacher_id: teacherId}, function (data) {
+            $.get("teachers/"+teacherId+"/edit", null, function (data) {
                 if (data.success == 1) {
                     fetchTeacher(data);
                     modifyTeacher();

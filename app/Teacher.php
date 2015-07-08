@@ -11,4 +11,8 @@ class Teacher extends Model
     {
         return $this->hasOne('App\UploadedRes', 'id');
     }
+    public function group()
+    {
+        return $this->belongsTo('App\TeacherGroup', 'id');
+    }
 }

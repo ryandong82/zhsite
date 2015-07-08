@@ -87,27 +87,27 @@
             <h5>
                 <span class="bg-boya">名师介绍</span>
                 <small class="more pull-right">
-                    <a href="teachers">more</a>
+                    <a href="{{URL::route('site.teachers')}}">more</a>
                 </small>
             </h5>
             <div class="sidebar-right">
                 <div class="row">
                     @foreach($teachers as $teacher)
                     <div class="teacher-single col-xs-6">
-                        <a href="./teacher.php?id=$arr_result[id]" class="thumbnail">
+                        <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="thumbnail">
                             <img class='lazy' src="statics/images/boya/t-face.jpg"
                                  data-original="statics/images/upload/{{$teacher->pic()->getResults()['file_name']}}"
                                  style="width:80px!important;width:115px!important;"></a>
 
                         <p class='text-center'>
-                            <a href="./teacher.php?id={{$teacher['id']}}" class="blue">
+                            <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="blue">
                                 {{$teacher['name']}}
                             </a>
                         </p>
                     </div>
                     @endforeach
                 </div>
-                <img src="./statics/images/boya/child_arrow.jpg" class="child_arrow"></div>
+                <img src="statics/images/boya/child_arrow.jpg" class="child_arrow"></div>
         </div>
         <!-- 名师介绍 end-->
 

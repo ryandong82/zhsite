@@ -17,7 +17,7 @@ class MyUtil
             $ext = image_type_to_extension($img_type, TRUE);
             rename($new_file, $new_file . $ext);
             $new_file = $new_file . $ext;
-            return $new_file;
+            return $photo_file;
         }
     }
 
