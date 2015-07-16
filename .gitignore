@@ -3,6 +3,7 @@
 Homestead.yaml
 .env
 .env.example
+.idea
 .idea/.name
 .idea/encodings.xml
 .idea/misc.xml

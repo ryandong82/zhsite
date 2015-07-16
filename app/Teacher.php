@@ -9,10 +9,10 @@ class Teacher extends Model
     //
     public function pic()
     {
-        return $this->hasOne('App\UploadedRes', 'id');
+        return $this->belongsTo('App\UploadedRes', 'photo', 'id');
     }
     public function group()
     {
-        return $this->belongsTo('App\TeacherGroup', 'id');
+        return $this->belongsTo('App\TeacherGroup', 'group', 'id');
     }
 }

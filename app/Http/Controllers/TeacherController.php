@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\TeacherGroup;
 use App\Teacher;
+use App\UploadedRes;
+use Illuminate\Support\Facades\DB;
 
 
 class TeacherController extends Controller
@@ -50,32 +52,40 @@ class TeacherController extends Controller
         $res->filename = $filename;
         $request->file('myFile')->move($_SERVER['DOCUMENT_ROOT'] . "/statics/images/upload", $filename);
         //
-        $res->save();
-        $teacher->name = $request->request->get("teacher_name");
-        $teacher->visible = $request->request->get("teacher_hidden") == 0 ? 1 : 0;
-        $teacher->in_intro = $request->request->get("show_in_intro");
-        $teacher->group = $request->request->get("group_id");
-        $teacher->ord_no = $request->request->get("order_num");
-        $teacher->descript = $request->request->get("teacher_desc");
-        $teacher->content = $request->request->get("teacher_content");
-        $teacher->photo = $res->id;
-        $teacher->save();
 
-        $arr = array(
-            "success" => 1,
-            "teacher_name" => $teacher->name,
-            "teacher_desc" => $teacher->descript,
-            "teacher_id" => $teacher->id,
-            "photo_file" => $filename,
-            "create_date" => $teacher->created_at,
-            "order_num" => $teacher->ord_no,
-            "visible" => $teacher->visible ,
-            "show_in_intro" => $teacher->in_intro,
-            "group_id" => $teacher->group,
-            "teacher_content" => $teacher->content,
-            "group_name" => $teacher->group()->getResults()["name"]);
+        DB::connection()->getPdo()->beginTransaction();
+        try {
+            $res->save();
+            $teacher->name = $request->request->get("teacher_name");
+            $teacher->visible = $request->request->get("teacher_hidden") == 0 ? 1 : 0;
+            $teacher->in_intro = $request->request->get("show_in_intro");
+            $teacher->group = $request->request->get("group_id");
+            $teacher->ord_no = $request->request->get("order_num");
+            $teacher->descript = $request->request->get("teacher_desc");
+            $teacher->content = $request->request->get("teacher_content");
+            $teacher->photo = $res->id;
+            $teacher->save();
+            $arr = array(
+                "success" => 1,
+                "teacher_name" => $teacher->name,
+                "teacher_desc" => $teacher->descript,
+                "teacher_id" => $teacher->id,
+                "photo_file" => $filename,
+                "create_date" => $teacher->created_at->toDateTimeString(),
+                "order_num" => $teacher->ord_no,
+                "visible" => $teacher->visible,
+                "show_in_intro" => $teacher->in_intro,
+                "group_id" => $teacher->group,
+                "teacher_content" => $teacher->content,
+                "group_name" => $teacher->group()->getResults()["name"]);
+            DB::connection()->getPdo()->commit();
+            return response()->json($arr, 200, array('Content-Type' => 'text/json;charset=UTF-8'));
+        } catch (\PDOException $e) {
+            DB::connection()->getPdo()->rollback();
+            $arr = array('success' => 0);
+            return response()->json($arr, 500, array('Content-Type' => 'text/json;charset=UTF-8'));
+        }
 
-        return response()->json($arr, 200, 'Content-Type:text/json;charset=UTF-8');
 
     }
 
@@ -98,8 +108,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        if ($teacher = Teacher::find($id))
-        {
+        if ($teacher = Teacher::find($id)) {
             $arr = array(
                 "success" => 1,
                 "teacher_name" => $teacher->name,
@@ -108,13 +117,12 @@ class TeacherController extends Controller
                 "photo_file" => $teacher->pic()->getResults()['filename'],
                 "create_date" => $teacher->created_at,
                 "order_num" => $teacher->ord_no,
-                "visible" => $teacher->visible ,
+                "visible" => $teacher->visible,
                 "show_in_intro" => $teacher->in_intro,
                 "group_id" => $teacher->group,
                 "teacher_content" => $teacher->content,
                 "group_name" => $teacher->group()->getResults()["name"]);
-        } else
-        {
+        } else {
             $arr = array("success" => 0);
         }
         return response()->json($arr, 200, ['Content-Type:text/json;charset=UTF-8']);
@@ -140,5 +148,17 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         //
+        DB::connection()->getPdo()->beginTransaction();
+        try {
+            $teachers = Teacher::find($id);
+            $resId = $teachers->photo;
+            $teachers->delete();
+            UploadedRes::destroy($resId);
+            DB::connection()->getPdo()->commit();
+            return response()->json(array("ok" => 1), 200, ['Content-Type:text/json;charset=UTF-8']);
+        } catch (\PDOException $e) {
+            DB::connection()->getPdo()->rollback();
+            return response()->json(array("ok" => 0), 500, ['Content-Type:text/json;charset=UTF-8']);
+        }
     }
 }

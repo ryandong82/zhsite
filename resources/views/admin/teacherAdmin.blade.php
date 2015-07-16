@@ -9,84 +9,69 @@
 @section('mainbody')
     <div id="form_new" style="display: none" title="新增师资信息">
         <!--iframe id="hiddenframe" name="hiddenframe" style="display: none;" width="200" height="200"></iframe-->
-        <form id="form_teacher">
-            <input type="hidden" name="teacher_id" id="teacher_id"/>
-            <table id="dlg_fields">
-                <tr>
-                    <th rowspan="6">头像图片：</th>
-                    <td rowspan="6" width="100">
+        <div class="row">
+            <div class="col-sm-2">
+                <div>
+                    <img id="ImgPr" class="pull-left" width="115" height="165" style='height:164px;'>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <form id="form_teacher" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <input name="myFile" type="file" id="upload_file" required="required" accept="image/*"
+                                   class="col-sm-10"/></div>
 
-                        <img id="ImgPr" width="115" height="165" style='height:164px;'>
+                        <label for="teacher_name" class="col-sm-2 control-label">姓名</label>
 
-                    </td>
-                    <th>
-                        姓名：
-                    </th>
-                    <td colspan="1">
-                        <input name="teacher_name" id="teacher_name" type="text" required="required"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input
-                                name="myFile" type="file" id="upload_file" required="required"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>是否隐藏：</th>
-                    <td><input name="teacher_hidden" type="checkbox" id="teacher_hidden"/></td>
-                </tr>
-                <tr>
-                    <th>
-                        在简介上显示
-                    </th>
-                    <td>
-                        <input name="show_in_intro" type="checkbox" id="show_in_intro" checked="checked"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        分组
-                    </th>
-                    <td>
-                        <select name="group_id" id="group_id" required="required">
-                            @foreach($groups as $group)
-                                <option value="{{$group['id']}}">{{$group['name']}}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        顺序号
-                    </th>
-                    <td>
-                        <input name="order_num" type="number" id="order_num"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        简介：
-                    </th>
-                    <td colspan="3">
-                        <input name="teacher_desc" id="teacher_desc" type="text" required="required"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>内容</th>
-                    <td colspan="3"><textarea name="teacher_content" id="teacher_content"
-                                              required="required"></textarea></td>
-                </tr>
-                <tr style="display:none;">
-                    <td>
-                        <button type="submit" id="submit_btn"></button>
-                    </td>
-                    <td colspan="3">
-                        <div id="error_msg"></div>
-                    </td>
-                </tr>
-            </table>
-        </form>
+                        <div class="col-sm-4">
+                            <input class="form-control" name="teacher_name" id="teacher_name" type="text"
+                                   required="required"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="group_id" class="col-sm-2 control-label">分组</label>
+
+                        <div class="col-sm-4"><select class="form-control" name="group_id" id="group_id"
+                                                      required="required">
+                                @foreach($groups as $group)
+                                    <option value="{{$group['id']}}">{{$group['name']}}</option>
+                                @endforeach
+                            </select></div>
+
+                        <label for="order_num" class="col-sm-2 control-label">顺序号</label>
+
+                        <div class="col-sm-4"><input class="form-control" name="order_num" type="number"
+                                                     id="order_num"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher_desc" class="col-sm-2 control-label">简介</label>
+
+                        <div class="col-sm-10"><input class="form-control" name="teacher_desc" id="teacher_desc"
+                                                      type="text"
+                                                      required="required"/></div>
+                    </div>
+                    <div class="form-group"><label for="teacher_content" class="col-sm-2 control-label">内容</label>
+
+                        <div class="col-sm-10"><textarea class="form-control"
+                                                         name="teacher_content"
+                                                         id="teacher_content"
+                                                         required="required"></textarea></div>
+                    </div>
+
+
+                    <div class="checkbox"><label><input name="teacher_hidden" type="checkbox"
+                                                        id="teacher_hidden"/>是否隐藏</label>
+
+                        <label><input name="show_in_intro" type="checkbox" id="show_in_intro"
+                                      checked="checked"/>在简介上显示</label>
+                    </div>
+                    <button type="submit" id="submit_btn" style="display:none"></button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div id="main" class="container">
@@ -127,8 +112,8 @@
                     </td>
                     <td>
                         <img class='lazy'
-                             src="../statics/images/boya/t-face.jpg"
-                             data-original="../statics/images/upload/{{$teacher->pic()->getResults()['file_name']}}"
+                             src="statics/images/boya/t-face.jpg"
+                             data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
                              width="115"
                              height="165"
                              style='height:164px;'></td>
@@ -173,9 +158,9 @@
 @stop
 @section('scripts')
     @parent
-    <script src="./statics/plugin/jquery-ui.min.js"></script>
-    <script src="./statics/plugin/jquery.lazyload.min.js"></script>
-    <script src="./statics/plugin/jq_extends.js"></script>
+    <script src="statics/plugin/jquery-ui.min.js"></script>
+    <script src="statics/plugin/jquery.lazyload.min.js"></script>
+    <script src="statics/plugin/jq_extends.js"></script>
 
     <script>
         function clear_dialog() {
@@ -206,9 +191,11 @@
                     function (event) {
                         event.preventDefault();
                         var _frm_data = new FormData(this);
+                        _frm_data.append("_token", "{{csrf_token()}}");
+
                         $.ajax(
                                 {
-                                    url: "new_teacher_ajax.php",
+                                    url: "teachers",
                                     type: "POST",
                                     data: _frm_data,
                                     processData: false,  // 告诉jQuery不要去处理发送的数据
@@ -285,8 +272,8 @@
                         var _frm_data = new FormData(this);
                         $.ajax(
                                 {
-                                    url: "edit_teacher_ajax.php",
-                                    type: "POST",
+                                    url: "teachers/" + $(this).data("id"),
+                                    type: "PUT",
                                     data: _frm_data,
                                     processData: false,  // 告诉jQuery不要去处理发送的数据
                                     contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
@@ -377,13 +364,14 @@
                 event.preventDefault();
                 if (confirm("是否要删除")) {
                     $tmp_this = $(this);
+
                     $.ajax({
                         dataType: "json",
-                        data: {
-                            id: $(this).data("id")
+                        data:{
+                            _token: "{{csrf_token()}}"
                         },
-                        url: "delete_teacher_ajax.php",
-                        type: "POST",
+                        url: "teachers/" + $(this).data("id"),
+                        type: "DELETE",
                         success: function (data) {
                             if (data.ok == 1)
                                 $tmp_this.parent().parent().remove();
@@ -399,7 +387,7 @@
 
 
         function prepareTeacher(teacherId) {
-            $.get("teachers/"+teacherId+"/edit", null, function (data) {
+            $.get("teachers/" + teacherId + "/edit", null, function (data) {
                 if (data.success == 1) {
                     fetchTeacher(data);
                     modifyTeacher();
@@ -430,8 +418,8 @@
         function modifyTeacher() {
             $("#form_new").dialog({
                 resizable: false,
-                height: 600,
-                width: 600,
+                height: 400,
+                width: 700,
                 modal: true,
                 //按钮
                 buttons: {
@@ -450,8 +438,8 @@
             clear_dialog();
             $("#form_new").dialog({
                 resizable: false,
-                height: 600,
-                width: 600,
+                height: 400,
+                width: 700,
                 modal: true,
                 //按钮
                 buttons: {
