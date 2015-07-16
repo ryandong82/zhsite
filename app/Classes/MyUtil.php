@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use App\UploadedRes;
+
 class MyUtil
 {
 
@@ -44,5 +46,25 @@ class MyUtil
         if ($len + 3 > $max_len)
             $result = mb_strcut($txt_content, 0, $max_len - 3, 'UTF-8') . "...";
         return $result;
+    }
+
+    public static function replace_reference_tag($content)
+    {
+        //<img src="{@res_id=3}"
+        return preg_replace_callback('/<img\ssrc="{@res_id=(?P<resId>\d+)}">/', function($matches){
+                $res = UploadedRes::find($matches["resId"]);
+                return '<img src="statics/images/upload/' . $res->filename . "\">";
+            }, $content);
+    }
+    public static function get_res_file($content)
+    {
+        //<img src="{@res_id=3}"
+        $matched = preg_match('/<img\ssrc="{@res_id=(?P<resId>\d+)}">/', $content, $matches);
+        if ($matched)
+        {
+            $res = UploadedRes::find($matches["resId"]);
+            return $res->filename;
+        }
+        return null;
     }
 }

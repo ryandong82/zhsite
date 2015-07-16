@@ -134,9 +134,56 @@ class TeacherController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+
+
+        if ($request->file('myFile')) {
+            $res = $teacher->pic()->getResults();
+            $res->mime = $request->file('myFile')->getMimeType();
+            $filename = MyUtil::gen_file_name($request->file('myFile')->guessClientExtension());
+            $res->filename = $filename;
+            $request->file('myFile')->move($_SERVER['DOCUMENT_ROOT'] . "/statics/images/upload", $filename);
+            //
+        }
+        DB::connection()->getPdo()->beginTransaction();
+        try {
+            if (isset($res)) {
+                $res->save();
+            }
+            $teacher->name = $request->request->get("teacher_name");
+            $teacher->visible = $request->request->get("teacher_hidden") == "on" ? 0 : 1;
+            //$request->request->get("teacher_hidden") == 0 ? 1 : 0;
+            $teacher->in_intro = $request->request->get("show_in_intro") == "on" ? 1 : 0;
+            //$request->request->get("show_in_intro");
+            $teacher->group = $request->request->get("group_id");
+            $teacher->ord_no = $request->request->get("order_num");
+            $teacher->descript = $request->request->get("teacher_desc");
+            $teacher->content = $request->request->get("teacher_content");
+
+            $teacher->save();
+            $arr = array(
+                "success" => 1,
+                "teacher_name" => $teacher->name,
+                "teacher_desc" => $teacher->descript,
+                "teacher_id" => $teacher->id,
+                "photo_file" => $teacher->pic()->getResults()["filename"],
+                "create_date" => $teacher->created_at->toDateTimeString(),
+                "order_num" => $teacher->ord_no,
+                "visible" => $teacher->visible,
+                "show_in_intro" => $teacher->in_intro,
+                "group_id" => $teacher->group,
+                "teacher_content" => $teacher->content,
+                "group_name" => $teacher->group()->getResults()["name"]);
+            DB::connection()->getPdo()->commit();
+            return response()->json($arr, 200, array('Content-Type' => 'text/json;charset=UTF-8'));
+        } catch (\PDOException $e) {
+            DB::connection()->getPdo()->rollback();
+            $arr = array('success' => 0);
+            return response()->json($arr, 500, array('Content-Type' => 'text/json;charset=UTF-8'));
+        }
+
     }
 
     /**

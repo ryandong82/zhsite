@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Article;
 use App\Teacher;
+use App\Classes\MyUtil;
 use App\ArticleCategory;
 
 class ArticleSiteController extends Controller
@@ -53,6 +54,7 @@ class ArticleSiteController extends Controller
         //
         $teachers = Teacher::all();
         $article = Article::find($id);
+        $article->content = MyUtil::replace_reference_tag($article->content) ?: $article->content;
         $resp = view('site.article', array('article'=>$article, 'teachers'=>$teachers));
         return $resp;
     }

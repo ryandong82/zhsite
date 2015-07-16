@@ -111,7 +111,7 @@
 
                     <div class="text-center">
                         <a href="{{URL::route("site.article", $article['id'])}}">
-                            <img data-original="http://www.boyaceo.com/uploadfile/2015/0204/20150204032221168.jpg"
+                            <img data-original="/statics/images/upload/{{$article->file}}"
                                  class='lazy content-img'></a>
                     </div>
                     <p class='single-tab-content'>
@@ -153,8 +153,7 @@
 
                     <div class="text-center">
                         <a href="{{URL::route("site.article", $article['id'])}}">
-                            <img
-                                    data-original="http://www.boyaceo.com/uploadfile/2015/0204/20150204032221168.jpg"
+                            <img data-original="/statics/images/upload/{{App\Classes\MyUtil::get_res_file($article->content)}}"
                                     class='lazy content-img'></a>
                     </div>
                     <p class='single-tab-content'>

@@ -6,7 +6,7 @@
 @section('article')
     <article>
         <div class="article_content">
-            {{$article["content"]}}
+            <?php echo $article["content"]?>
         </div>
     </article>
 @stop

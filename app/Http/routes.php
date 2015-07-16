@@ -28,4 +28,5 @@ Route::get('/admin', 'AdminController@index');
 
 
 Route::resource('articles', 'ArticleController');
-Route::resource('teachers', 'TeacherController');
+Route::post('/teachers/{teachers}', array('as' => 'teachers.update', 'uses'=> 'TeacherController@update'));
+Route::resource('teachers', 'TeacherController', array('except' => 'update'));

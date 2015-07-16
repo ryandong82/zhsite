@@ -17,6 +17,8 @@
             </div>
             <div class="col-sm-10">
                 <form id="form_teacher" class="form-horizontal">
+                    <input type="hidden" name="teacher_id" id="teacher_id"/>
+
                     <div class="form-group">
                         <div class="col-sm-6">
                             <input name="myFile" type="file" id="upload_file" required="required" accept="image/*"
@@ -128,14 +130,12 @@
                         {{$teacher['created_at']}}
                     </td>
                     <td>
-                        @if($teacher['visible']!=1)
+                        @if($teacher->visible!=1)
                             是
-                        @else
-                            否
                         @endif
                     </td>
                     <td>
-                        @if($teacher['in_intro']==1)
+                        @if($teacher->in_intro==1)
                             是
                         @endif
                     </td>
@@ -270,10 +270,11 @@
                     function (event) {
                         event.preventDefault();
                         var _frm_data = new FormData(this);
+                        _frm_data.append("_token", "{{csrf_token()}}");
                         $.ajax(
                                 {
-                                    url: "teachers/" + $(this).data("id"),
-                                    type: "PUT",
+                                    url: "teachers/" + this.teacher_id.value,
+                                    type: "POST",
                                     data: _frm_data,
                                     processData: false,  // 告诉jQuery不要去处理发送的数据
                                     contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
@@ -360,6 +361,7 @@
             });
 
 
+            $(".delete_link", contxt).unbind("click");
             $(".delete_link", contxt).click(function (event) {
                 event.preventDefault();
                 if (confirm("是否要删除")) {
@@ -367,7 +369,7 @@
 
                     $.ajax({
                         dataType: "json",
-                        data:{
+                        data: {
                             _token: "{{csrf_token()}}"
                         },
                         url: "teachers/" + $(this).data("id"),
@@ -397,7 +399,7 @@
 
         function fetchTeacher(teacher) {
             clear_dialog();
-            $("#ImgPr").attr("src", "../statics/images/upload/" + teacher.photo_file);
+            $("#ImgPr").attr("src", "statics/images/upload/" + teacher.photo_file);
             $("#upload_file").attr("required", false);
             $("#teacher_name").val(teacher.teacher_name);
             $("#teacher_desc").val(teacher.teacher_desc);

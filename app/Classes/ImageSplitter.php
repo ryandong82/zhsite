@@ -37,7 +37,7 @@ class ImageSplitter
 
     public function getPlainContent($res_id)
     {
-        $plain_content = preg_replace('/<img\ssrc="data:.*?;base64,.*?">/', "<img src=\"{@res_id=$res_id}\"", $this->content);
+        $plain_content = preg_replace('/<img\ssrc="data:.*?;base64,.*?">/', "<img src=\"{@res_id=$res_id}\">", $this->content);
         return $plain_content;
     }
 
