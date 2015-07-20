@@ -57,8 +57,11 @@ class TeacherController extends Controller
         try {
             $res->save();
             $teacher->name = $request->request->get("teacher_name");
-            $teacher->visible = $request->request->get("teacher_hidden") == 0 ? 1 : 0;
-            $teacher->in_intro = $request->request->get("show_in_intro");
+
+            $teacher->visible = $request->request->get("teacher_hidden") == "on" ? 0 : 1;
+            $teacher->in_intro = $request->request->get("show_in_intro") == "on" ? 1 : 0;
+//            $teacher->visible = $request->request->get("teacher_hidden") == 0 ? 1 : 0;
+//            $teacher->in_intro = $request->request->get("show_in_intro");
             $teacher->group = $request->request->get("group_id");
             $teacher->ord_no = $request->request->get("order_num");
             $teacher->descript = $request->request->get("teacher_desc");

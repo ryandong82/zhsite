@@ -151,7 +151,7 @@
                     href="http://www.boyaceo.com/list-32-1.html">友情链接</a>&nbsp;｜&nbsp;<a
                     href="http://wpa.qq.com/msgrd?V=1&uin=2355899908">意见反馈</a>&nbsp;｜&nbsp;<a href="">网站地图</a></p>
 
-        <p>联系电话：<span class="text-primary h4">400－876－1791</span></p>
+        <p>联系电话：<span class="text-primary h4">010-58406365</span></p>
 
         <p>Copyright@2009-2014 boyaceo.com All RightReserved [京ICP备10037530号－１]</p>
     </div>

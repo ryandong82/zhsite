@@ -7,7 +7,7 @@
                 <span class="glyphicon glyphicon-phone-alt pull-left" style="font-size:40px;"></span>
             </h5>
             <h4>官方报名热线</h4>
-            <h4>400-876-1791</h4>
+            <h5>010-58406365</h5>
         </div>
         <div class="sidebar course">
             <h5 style="background:#b91d21;padding:8px 35px 8px 15px;color:white;"
@@ -96,7 +96,7 @@
                     <div class="teacher-single col-xs-6">
                         <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="thumbnail">
                             <img class='lazy' src="statics/images/boya/t-face.jpg"
-                                 data-original="statics/images/upload/{{$teacher->pic()->getResults()['file_name']}}"
+                                 data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
                                  style="width:80px!important;width:115px!important;"></a>
 
                         <p class='text-center'>
@@ -297,68 +297,6 @@
         <!-- 开课通知 end-->
     </div>
     <!-- 快速报名 start-->
-    <div class="pinned-box">
-        <div class="sidebar pinned">
-            <h5>
-                <span class="bg-boya">快速报名</span>
-            </h5>
-
-            <div class="sidebar-right clearfix">
-                <p class="text-muted">
-                    <span class="text-danger">*温馨提示</span>
-                    <span style="font-size:12px;">博雅总裁商学院郑重承诺；所填信息仅用于招生，绝不外泄。</span>
-                </p>
-
-                <div class="col-xs-12">
-                    <form action="" method="post"
-                          name="myform" id="application-2" class='form-horizontal'>
-                        <div class="form-group">
-                            <label for="quickname">姓名</label>
-                            <input type="text" class="form-control input-sm" id="quickname"
-                                   placeholder="Enter name"
-                                   name="name"></div>
-                        <div class="form-group">
-                            <label for="quickmobile">手机</label>
-                            <input type="text" class="form-control input-sm" id="quickmobile"
-                                   placeholder="Enter mobile"
-                                   name="mobile"></div>
-                        <div class="form-group">
-                            <label for="quickid">身份证</label>
-                            <input type="text" class="form-control input-sm" id="exampleInputPassword1"
-                                   placeholder="Enter identitycard" name="column1"></div>
-                        <div class="form-group">
-                            <label for="quickproject">项目</label>
-                            <select class="form-control input-sm" name="column0" id="quickproject">
-                                <option value="">选择 -项目</option>
-                                <option value="创业训练">博雅创业家训练营</option>
-                                <option value="实战PE">博雅实战PE与资本运营董事长精品班</option>
-                                <option value="经营方略">博雅经营方略（EMBA）总裁精品班</option>
-                                <option value="国学管理">博雅书院国学管理课堂</option>
-                                <option value="博雅国学智慧">博雅国学智慧总裁精修班</option>
-                                <option value="博雅女性学堂">博雅聚娴女性学堂</option>
-                                <option value="博雅私董会">博雅私人董事会</option>
-                                <option value="">博雅工商管理精品班</option>
-                                <option value="博雅投资家">博雅投资家高端项目</option>
-                                <option value="博雅高端项目">博雅后EMBA高端项目</option>
-                                <option value="新加坡课程">博雅海外CEO课程—新加坡南洋理工大学</option>
-                                <option value="财务总监">博雅财务总监高级研修班</option>
-                                <option value="营销总监">博雅营销总监高级研修班</option>
-                                <option value="">2015博雅青少年国学经典领袖营</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="quickmessage">留言</label>
-                        <textarea class="form-control input-sm" id="quickmessage" placeholder="Enter message"
-                                  name="column2"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-warning center-block">提交</button>
-                    </form>
-                </div>
-                <img src="http://www.boyaceo.com/statics/images/boya/child_arrow.jpg"
-                     class="child_arrow">
-            </div>
-        </div>
-    </div>
     <script type="text/javascript" src='./statics/plugin/jquery.pin.js'></script>
     <script type="text/javascript">
         if ($('#child_main').height() > 1000)

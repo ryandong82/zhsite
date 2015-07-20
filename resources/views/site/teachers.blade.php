@@ -83,7 +83,7 @@
                             <!-- 师资［＋＋］ start-->
                             @foreach($groups as $group)
                             <div class="tab-pane fade" id="group-{{$group['id']}}">
-                                @foreach($group->teachers() as $teacher)
+                                @foreach($group->teachers()->getResults() as $teacher)
                                 <div class="col-sm-12 col-md-6 col-lg-4 teacher-single clearfix">
                                     <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="thumbnail col-xs-5"> <img class="lazy"
