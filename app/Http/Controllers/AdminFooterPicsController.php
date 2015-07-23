@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\UploadedRes;
+use App\FooterPics;
 
-class AdminFooterImageController extends Controller
+class AdminFooterPicsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class AdminFooterImageController extends Controller
      */
     public function index()
     {
-        $pics = UploadedRes::all();
-        $resp = view('admin.footerPics', $pics);
+        $footerPics = FooterPics::all();
+        $resp = view('admin.footerpicseq', array('footerPics' => $footerPics));
         return $resp;
     }
 
@@ -45,7 +46,7 @@ class AdminFooterImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -56,7 +57,7 @@ class AdminFooterImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -67,7 +68,7 @@ class AdminFooterImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -78,7 +79,7 @@ class AdminFooterImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)

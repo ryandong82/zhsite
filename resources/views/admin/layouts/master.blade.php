@@ -64,8 +64,8 @@
                             </ul>
 
                         </li>
-                        <li id="li_banner"><a href="#">主页横幅过渡图</a></li>
-                        <li id="li_footer"><a href="#">底部滚动图</a></li>
+                        <li id="li_banner"><a href="{{URL::route('footerPics.index')}}">主页横幅过渡图</a></li>
+                        <li id="li_footer"><a href="">底部滚动图</a></li>
                     </ul>
                 </div>
             </div>

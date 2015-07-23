@@ -15,4 +15,9 @@ class Teacher extends Model
     {
         return $this->belongsTo('App\TeacherGroup', 'group', 'id');
     }
+
+    public function scopeTopN($query, $num)
+    {
+        return $query->where('in_intro', 1)->orderBy('ord_no')->take($num)->get();
+    }
 }

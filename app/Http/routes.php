@@ -13,6 +13,7 @@
 Route::model('article', 'App\Article');
 Route::model('teacher', 'App\Teacher');
 Route::model('teacher_group', 'App\TeacherGroup');
+Route::model('footerPic', 'App\FooterPics');
 
 Route::get('/teacherpage', array('as'=>'site.teachers', 'uses'=>'TeacherPageController@index'));
 Route::get('/teacher-{id}.html', array('as'=>'site.teacher', 'uses'=>'TeacherPageController@show'));
@@ -26,7 +27,7 @@ Route::get('/admin', 'AdminController@index');
 //Route::get('/admin/article', 'ArticleController@index');
 //Route::controller('/admin/article', 'ArticleController');
 
-
 Route::resource('articles', 'ArticleController');
 Route::post('/teachers/{teachers}', array('as' => 'teachers.update', 'uses'=> 'TeacherController@update'));
 Route::resource('teachers', 'TeacherController', array('except' => 'update'));
+Route::resource('footerPics', 'AdminFooterPicsController');

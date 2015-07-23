@@ -17,7 +17,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::topN(6);
         return response()->view('site.about', array('teachers'=>$teachers));
     }
 
