@@ -24,6 +24,7 @@ Route::get('/about', 'AboutController@index');
 Route::get('/index', 'IndexController@index');
 Route::get('/', 'IndexController@index');
 Route::get('/admin', 'AdminController@index');
+Route::get('/colabor',array('as'=>'site.colabor','uses'=> 'ColaborController@index'));
 //Route::get('/admin/article', 'ArticleController@index');
 //Route::controller('/admin/article', 'ArticleController');
 
@@ -31,3 +32,4 @@ Route::resource('articles', 'ArticleController');
 Route::post('/teachers/{teachers}', array('as' => 'teachers.update', 'uses'=> 'TeacherController@update'));
 Route::resource('teachers', 'TeacherController', array('except' => 'update'));
 Route::resource('footerPics', 'AdminFooterPicsController');
+
