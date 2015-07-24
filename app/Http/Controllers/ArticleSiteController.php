@@ -52,7 +52,7 @@ class ArticleSiteController extends Controller
     public function show($id)
     {
         //
-        $teachers = Teacher::all();
+        $teachers = Teacher::topN(6);
         $article = Article::find($id);
         $article->content = MyUtil::replace_reference_tag($article->content) ?: $article->content;
         $resp = view('site.article', array('article'=>$article, 'teachers'=>$teachers));

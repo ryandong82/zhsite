@@ -6,17 +6,17 @@
         中和商学院 - @yield('title')
     </title>
     <meta name="Keywords"
-          content="博雅总裁商学院,博雅总裁俱乐部,博雅私人董事会,博雅投资家高端项目,博雅聚娴女性学堂,博雅后EMBA高端项目,博雅国学智慧总裁精修班,博雅人,北大博雅总裁班，博雅资源汇">
+          content="中和商学院">
     <meta name="Description"
-          content="博雅总裁商学院成立于2008年，从诞生起就继承了百年学府北京大学的优秀基因，经过六年的磨砺，博雅总裁商学院已经发展成为有完善课程体系、成熟运营团队的一流商学院。是目前国内最富盛名、最具远见的企业家商学院之一。 博雅总裁商学院设立博雅总裁俱乐部，采取线上线下结合的形式，志在搭建最优质的学习平台，最有影响力的商脉平台，最有效的投融资平台。">
+          content="中和商学院”秉承以推动企业发展为己任，汇聚全球华人领域最受企业管理者欢迎的专家学者、著名企业家及国家相关政策参与和解读的专家，从宏观经济、企业战略、领导管理、投资融资、人文视野等领域，纵论领先之道，共同传承管理精髓，引领商界创新。 进而驾驭全球化商业挑战，推动企业持续快速成长与发展。">
     <link rel="shortcut icon" href="./statics/images/boya/logo.ico">
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" href="./statics/plugin/Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./statics/css/boya/layout.css">
+    <link rel="stylesheet" href="./statics/plugin/Bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="./statics/plugin/jquery-2.1.3.min.js"></script>
     <script src="./statics/plugin/jquery.lazyload.min.js"></script>
     <script src="./statics/plugin/Bootstrap/js/bootstrap.min.js"></script>
@@ -97,22 +97,22 @@
                 </div>
                 <ul class="navbar-nav collapse navbar-collapse" id="navbar-collapse-1">
                     <li>
-                        <a href="../" class='color'>首页</a>
+                        <a href="{{URL::route('site.index')}}" class='color'>首页</a>
                     </li>
                     <li>
-                        <a href="about" class='color'>学院介绍</a>
+                        <a href="{{URL::route('site.about')}}" class='color'>学院介绍</a>
                     </li>
                     <li>
-                        <a href="./courses-10-1.html" class='color'>课程介绍</a>
+                        <a href="{{URL::route('site.colabor')}}" class='color'>课程介绍</a>
                     </li>
                     <li>
-                        <a href="teacherpage" class='color'>师资介绍</a>
+                        <a href="{{URL::route('site.teachers')}}" class='color'>师资介绍</a>
                     </li>
                     <li>
-                        <a href="./about-44.html" class='color'>合作客户</a>
+                        <a href="{{URL::route('site.colabor')}}" class='color'>合作客户</a>
                     </li>
                     <li>
-                        <a href="contact" class='color'>联系我们</a>
+                        <a href="{{URL::route('site.contact')}}" class='color'>联系我们</a>
                     </li>
                     <!-- <li><a href="javascript:void(0);" class="fuzzy99 hidden-xs" target="_self">联系我们</a></li> -->
                     <!-- <li><a href="javascript:void(0);" onclick="boya_application()" target="_self">报名</a></li> -->

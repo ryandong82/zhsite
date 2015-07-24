@@ -19,10 +19,10 @@ Route::get('/teacherpage', array('as'=>'site.teachers', 'uses'=>'TeacherPageCont
 Route::get('/teacher-{id}.html', array('as'=>'site.teacher', 'uses'=>'TeacherPageController@show'));
 Route::get('/articlepage/article-{articleId}.html', array('as' => 'site.article', 'uses'=> 'ArticleSiteController@show'));
 Route::get('/category/category-{categoryId}-{pageNo}.html', array('as' => 'site.category', 'uses'=> 'ArticleCategoryController@show'));
-Route::get('/contact', 'ContactController@index');
-Route::get('/about', 'AboutController@index');
-Route::get('/index', 'IndexController@index');
-Route::get('/', 'IndexController@index');
+Route::get('/contact', array('as'=>'site.contact','uses'=>'ContactController@index'));
+Route::get('/about', array('as'=>'site.about','uses'=>'AboutController@index'));
+Route::get('/index', array('as'=>'site.index','uses'=>'IndexController@index'));
+Route::get('/', array('as'=>'site.root','uses'=>'IndexController@index'));
 Route::get('/admin', 'AdminController@index');
 Route::get('/colabor',array('as'=>'site.colabor','uses'=> 'ColaborController@index'));
 //Route::get('/admin/article', 'ArticleController@index');

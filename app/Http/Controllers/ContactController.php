@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $teachers = Teacher::all();
+        $teachers = Teacher::topN(6);
         return response()->view('site.contact', array('teachers'=>$teachers));
     }
 
