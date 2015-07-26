@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ArticleCategory;
 use App\Classes\MyUtil;
+use App\MainHorizontalPics;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Http\Requests;
@@ -25,13 +26,15 @@ class IndexController extends Controller
         //return ArticleCategory::find(1)->getForeignKey();
         $article_categories = ArticleCategory::all();
         //return $articles;
+        $horzPics = MainHorizontalPics::all();
         $articles = Article::all();
 //        foreach ($articles as $article) {
 //            $article["file"] = MyUtil::get_res_file($article->content);
 //        }
 
         ///return $article;
-        return response()->view('site.index', array('categories'=>$article_categories, 'articles'=>$articles));
+        return response()->view('site.index', array('categories' => $article_categories,
+            'articles' => $articles, 'horzPics' => $horzPics));
     }
 
     /**

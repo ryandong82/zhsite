@@ -12,10 +12,11 @@ class CreateMainHorizontalPicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mainhorizontalpics', function (Blueprint $table) {
-            $table->string('id')->unique();
+        Schema::create('main_horizontal_pics', function (Blueprint $table) {
+            $table->increments('id');
             $table->text('filename');
             $table->integer('mime');
+            $table->timestamps();
         });
     }
 

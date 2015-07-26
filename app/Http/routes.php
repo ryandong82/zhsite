@@ -14,6 +14,9 @@ Route::model('article', 'App\Article');
 Route::model('teacher', 'App\Teacher');
 Route::model('teacher_group', 'App\TeacherGroup');
 Route::model('footerPic', 'App\FooterPics');
+Route::model('main_horizontal_pics', 'App\MainHorizontalPics');
+Route::model('article_categories', 'App\ArticleCategory');
+
 
 Route::get('/siteFooterPic', array('as' => 'site.FooterPics', 'uses' => 'SiteFooterPicsController@index'));
 Route::get('/teacherpage', array('as' => 'site.teachers', 'uses' => 'TeacherPageController@index'));
@@ -35,4 +38,7 @@ Route::post('/teachers/{teachers}', array('as' => 'teachers.update', 'uses' => '
 Route::resource('teachers', 'TeacherController', array('except' => 'update'));
 Route::delete('/footerPics', array('as' => 'footerPics.destroy', 'uses' => 'AdminFooterPicsController@destroy'));
 Route::resource('footerPics', 'AdminFooterPicsController', array('except' => 'destroy'));
+Route::delete('/mainHorizontalPics', array('as' => 'mainHorizontalPics.destroy', 'uses' => 'AdminHorizontalPicsController@destroy'));
+Route::resource('mainHorizontalPics', 'AdminHorizontalPicsController', array('except' => 'destroy'));
+
 
