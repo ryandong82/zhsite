@@ -9,7 +9,7 @@
             <h4>官方报名热线</h4>
             <h5>010-58406365</h5>
         </div>
-        <div class="sidebar course">
+        <!--<div class="sidebar course">
             <h5 style="background:#b91d21;padding:8px 35px 8px 15px;color:white;"
                 class="clearfix text-center">
                 <span class="glyphicon glyphicon-education pull-left" style="font-size:18px;"></span>
@@ -79,7 +79,7 @@
                     <a class="btn btn-warning center-block">报名表下载</a>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- 热线&课程 end-->
 
         <!-- 名师介绍 start-->
@@ -93,18 +93,18 @@
             <div class="sidebar-right">
                 <div class="row">
                     @foreach($teachers as $teacher)
-                    <div class="teacher-single col-xs-6">
-                        <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="thumbnail">
-                            <img class='lazy' src="statics/images/boya/t-face.jpg"
-                                 data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
-                                 style="width:80px!important;width:115px!important;"></a>
+                        <div class="teacher-single col-xs-6">
+                            <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="thumbnail">
+                                <img class='lazy' src="statics/images/boya/t-face.jpg"
+                                     data-original="statics/images/upload/{{$teacher->pic()->getResults()['filename']}}"
+                                     style="width:80px!important;height:115px!important;"></a>
 
-                        <p class='text-center'>
-                            <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="blue">
-                                {{$teacher['name']}}
-                            </a>
-                        </p>
-                    </div>
+                            <p class='text-center'>
+                                <a href="{{URL::route("site.teacher", $teacher['id'])}}" class="blue">
+                                    {{$teacher['name']}}
+                                </a>
+                            </p>
+                        </div>
                     @endforeach
                 </div>
                 <img src="statics/images/boya/child_arrow.jpg" class="child_arrow"></div>
@@ -118,183 +118,48 @@
             </h5>
 
             <div class="list-group">
-                <a href="http://www.boyaceo.com/courses-10-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="课程">课程 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/news-11-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="活动">活动 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/index.php?m=content&c=index&a=lists&catid=12"
-                   class="list-group-item list-group-item btn-tool 			" data-toggle="tooltip"
-                   data-placement="left"
-                   title="" data-original-title="博雅人">博雅人 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/index.php?m=content&c=index&a=lists&catid=23"
-                   class="list-group-item list-group-item btn-tool 			" data-toggle="tooltip"
-                   data-placement="left"
-                   title="" data-original-title="">－博雅人PDF <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/news-24-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="">－博雅人 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/news-13-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="悦读">悦读 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/news-14-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="公益">公益 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/videos-25-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="视线">视线 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/list-40-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="学员心声">学员心声 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
-                <a href="http://www.boyaceo.com/list-41-1.html"
-                   class="list-group-item list-group-item btn-tool 			"
-                   data-toggle="tooltip" data-placement="left" title=""
-                   data-original-title="观点案例">观点案例 <span
-                            class="glyphicon glyphicon-send pull-right"></span>
-                </a>
+                @foreach($categories_in_pane as $category)
+                    <a href="{{URL::route('site.category', array('categoryId'=>$category["id"], 'pageNo'=>1))}}"
+                       class="list-group-item list-group-item btn-tool"
+                       data-toggle="tooltip" data-placement="left" title=""
+                       data-original-title="{{$category['name']}}">{{$category['category_name']}}<span
+                                class="glyphicon glyphicon-send pull-right"></span>
+                    </a>
+                @endforeach
             </div>
         </div>
         <!-- 其他栏目 end-->
 
         <!-- 媒体新闻 start-->
-        <div class="sidebar">
-            <h5>
-                <span class="bg-boya">媒体新闻</span>
-                <small class="more pull-right">
-                    <a href="http://www.boyaceo.com/list-9-1.html">more</a>
-                </small>
-            </h5>
-            <div class="panel sidebar-right media-news">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-03-04 ]
-                        </small>
-                        <a href="http://boyaceo.com?m=special&specialid=13">博雅创业家训练营</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2014-11-13 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/promotion/show_pe.php">博雅实战PE与资本运营董事长精品班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-05-28 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/new-11-169-1.html">博雅创业大赛第一期“获扶持项目名单”</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-05-28 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/new-11-168-1.html">梦想创未来 ——博雅创业大赛隆重开赛</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-05-25 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/new-11-167-1.html">品茶论智慧 读书历人生
-                            ——国学精修班5月份课外活动</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-05-13 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/new-24-166-1.html">私人董事会首席专家教练刘秉君：五月的思考——EMBA之后，企业家在混什么圈子</a>
-                    </li>
-                    <li class="list-group-item">
-                        <small class="text-primary">
-                            [
-                            2015-03-03 ]
-                        </small>
-                        <a href="http://www.boyaceo.com/new-14-122-1.html">博雅公益：感谢有你！</a>
-                    </li>
-                </ul>
-                <img src="http://www.boyaceo.com/statics/images/boya/child_arrow.jpg"
-                     class="child_arrow">
+        @for($i=0;$i<min(count($categories_in_pane), 2);$i++)
+            {{--@foreach($categories_in_pane->orderBy('ord_no')->take(2)->get() as $category)--}}
+            <?php
+            $category = $categories_in_pane[$i]
+            ?>
+            <div class="sidebar">
+                <h5>
+                    <span class="bg-boya">{{$category["category_name"]}}</span>
+                    <small class="more pull-right">
+                        <a href="{{URL::route('site.category', $category['id'])}}">more</a>
+                    </small>
+                </h5>
+                <div class="panel sidebar-right media-news">
+                    <ul class="list-group">
+                        @foreach($category->articles()->getResults() as $article)
+                            <li class="list-group-item">
+                                <small class="text-primary">
+                                    [
+                                    {{date('Y-m-d', strtotime($article['created_at']))}} ]
+                                </small>
+                                <a href="{{URL::route('site.article', $article['id'])}}">{{$article['title']}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <img src="statics/images/boya/child_arrow.jpg"
+                         class="child_arrow">
+                </div>
             </div>
-        </div>
-        <!-- 媒体新闻 end-->
-
-        <!-- 开课通知 start-->
-        <div class="sidebar">
-            <h5>
-                <span class="bg-boya">课程简章</span>
-                <small class="more pull-right">
-                    <a href="http://www.boyaceo.com/about-44.html">more</a>
-                </small>
-            </h5>
-            <div class="sidebar-right">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085033523.doc">博雅国学智慧总裁精修班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085054690.doc">博雅聚娴女性学堂</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085112112.doc">博雅投资家高端项目</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085126280.doc">博雅私人董事会</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085156143.doc">博雅经营方略（EMBA）总裁精品班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085530919.doc">博雅实战PE与资本运营董事长精品班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085218792.doc">博雅书院国学管理课堂</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085251509.doc">博雅营销总监高级研修班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0319/20150319085306102.doc">博雅财务总监高级研修班</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://www.boyaceo.com/uploadfile/2015/0422/20150422093412922.doc">20150422093412527</a>
-                    </li>
-                </ul>
-                <img src="http://www.boyaceo.com/statics/images/boya/child_arrow.jpg"
-                     class="child_arrow">
-            </div>
-        </div>
-        <!-- 开课通知 end-->
+        @endfor
     </div>
     <!-- 快速报名 start-->
     <script type="text/javascript" src='./statics/plugin/jquery.pin.js'></script>

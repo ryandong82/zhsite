@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,7 +21,10 @@ class ContactController extends Controller
     {
         //
         $teachers = Teacher::topN(6);
-        return response()->view('site.contact', array('teachers'=>$teachers));
+        $articles = Article::all();
+        $categories_in_pane = ArticleCategory::all();
+        return response()->view('site.contact', array('teachers'=>$teachers, 'other_articles'=>$articles,
+            'categories_in_pane' => $categories_in_pane));
     }
 
     /**

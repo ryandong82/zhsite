@@ -19,7 +19,7 @@ class MyUtil
             $ext = image_type_to_extension($img_type, TRUE);
             rename($new_file, $new_file . $ext);
             $new_file = $new_file . $ext;
-            return $photo_file;
+            return $photo_file . $ext;
         }
     }
 
@@ -38,7 +38,7 @@ class MyUtil
         return $photo_file;
     }
 
-    public static function get_ellipsed_content($content, $max_len)
+    public static function get_content_with_ellipses($content, $max_len = 100)
     {
         $txt_content = preg_replace("/<.*?>/", "", $content);
         $len = strlen($txt_content);

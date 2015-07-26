@@ -2,7 +2,7 @@
 
 @section('title', $category["category_name"])
 @section('titlelink', URL::route("site.category", $category["id"]))
-@section("articler")
+@section("article")
     <!-- 标题 -->
     <h3 class="title">{{$category["category_name"]}}</h3>
 
@@ -17,8 +17,8 @@
     <!-- 新闻列表 end-->
 
     <!-- 分页 -->
-    <ul class="pager">
-        <li class="default">
-            <a class="a1">14条</a> <a href="news-13-0.html" class="a1">上一页</a> <span>1</span> <a href="news-13-2.html">2</a> <a href="news-13-2.html" class="a1">下一页</a>						</li>
-    </ul>
+    {{--<ul class="pager">--}}
+        {{--<li class="default">--}}
+            {{--<a class="a1">14条</a> <a href="news-13-0.html" class="a1">上一页</a> <span>1</span> <a href="news-13-2.html">2</a> <a href="news-13-2.html" class="a1">下一页</a>						</li>--}}
+    {{--</ul>--}}
 @stop

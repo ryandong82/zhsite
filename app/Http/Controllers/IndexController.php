@@ -26,9 +26,9 @@ class IndexController extends Controller
         $article_categories = ArticleCategory::all();
         //return $articles;
         $articles = Article::all();
-        foreach ($articles as $article) {
-            $article["file"] = MyUtil::get_res_file($article->content);
-        }
+//        foreach ($articles as $article) {
+//            $article["file"] = MyUtil::get_res_file($article->content);
+//        }
 
         ///return $article;
         return response()->view('site.index', array('categories'=>$article_categories, 'articles'=>$articles));

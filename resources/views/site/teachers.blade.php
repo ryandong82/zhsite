@@ -61,7 +61,7 @@
                                         <h3 class="h4"><a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                                           class="blue">{{$teacher['name']}}</a></h3>
 
-                                        <p class="text-muted">{{$teacher['descript']}}</p>
+                                        <p class="text-muted">{{\App\Classes\MyUtil::get_content_with_ellipses($teacher['descript'])}}</p>
                                     </div>
                                     <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="btn btn-default btn-xs"> <span
@@ -98,7 +98,7 @@
                                                           class="blue">{{$teacher['name']}}</a>
                                         </h3>
 
-                                        <p class="text-muted">{{$teacher['descript']}}</p>
+                                        <p class="text-muted">{{\App\Classes\MyUtil::get_content_with_ellipses($teacher['descript'])}}</p>
                                     </div>
                                     <a href="{{URL::route("site.teacher", $teacher['id'])}}"
                                        class="btn btn-default btn-xs"> <span

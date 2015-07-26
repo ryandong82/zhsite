@@ -1,7 +1,7 @@
 @extends('site.layouts.sublevel')
 
 @section('title', '课程简介')
-@section('titlelink', URL::route('site.colabor'))
+@section('titlelink', URL::route('site.classes'))
 @section('article')
     <style>
         .items {

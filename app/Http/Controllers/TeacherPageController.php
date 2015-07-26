@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Teacher;
 use App\TeacherGroup;
+
 class TeacherPageController extends Controller
 {
     /**
@@ -21,8 +24,8 @@ class TeacherPageController extends Controller
         //return $articles;
         $teachers = Teacher::all();
         ///return $article;
-        return response()->view('site.teachers', array('groups'=>$teacher_groups, 'all_teachers'=>$teachers,
-            'cnt'=>1));
+        return response()->view('site.teachers', array('groups' => $teacher_groups, 'all_teachers' => $teachers,
+            'cnt' => 1));
     }
 
     /**
@@ -48,21 +51,24 @@ class TeacherPageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
     {
         //
         $teacher = Teacher::find($id);
-        $teachers = Teacher::all();
-        return response()->view('site.teacher', array('teacher'=>$teacher, 'teachers'=>$teachers));
+        $teachers = Teacher::topN(6);
+        $articles = Article::topN(6);
+        $categories_in_pane = ArticleCategory::all();
+        return response()->view('site.teacher', array('teacher' => $teacher, 'teachers' => $teachers, 'other_articles' => $articles,
+            'categories_in_pane' => $categories_in_pane));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -73,7 +79,7 @@ class TeacherPageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -84,7 +90,7 @@ class TeacherPageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)

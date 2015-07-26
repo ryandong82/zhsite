@@ -12,6 +12,7 @@ use App\Classes\ImageSplitter;
 use Illuminate\View\View;
 use App\Classes\MyUtil;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -24,7 +25,7 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::all();
-        return response()->view('admin.article', array('articles'=>$articles));
+        return response()->view('admin.article', array('articles' => $articles));
     }
 
     /**
@@ -37,7 +38,7 @@ class ArticleController extends Controller
         //
 
         $categories = ArticleCategory::all();
-        $resp = view('admin.articleCreation', array('categories'=>$categories));
+        $resp = view('admin.articleCreation', array('categories' => $categories));
         return $resp;
     }
 
@@ -51,28 +52,36 @@ class ArticleController extends Controller
         //
         $article = new Article();
         $splitter = new ImageSplitter($request->request->get('article_content'));
-        $res = new UploadedRes();
+        if ($splitter->is_matched) {
+            for ($i = 0; $i < $splitter->is_matched; $i++) {
 
-        $img = $splitter->getImageContent();
-        $res->filename = MyUtil::save_file($img);
-        $res->mime = $splitter->getMime();
-        $res->save();
+                $res = new UploadedRes();
+
+                $img = $splitter->getImageContent()[$i];
+                $res->filename = MyUtil::save_file($img);
+                $res->mime = $splitter->getMime()[$i];
+                $res->save();
+                $arr_id[] = $res->id;
+            }
+            $article->content = $splitter->getPlainContent($arr_id);
+        } else {
+            $article->content = $request->request->get('article_content');
+        }
         $article->title = $request->request->get('article_title');
         $article->category = $request->request->get('article_category');
-        $article->content = $splitter->getPlainContent($res->id);
         $article->save();
 
 //        return response()->json(array("success" => "1", "new_id" => 1), 200,
 //            array('Content-Type:text/json;charset=UTF-8'));
 
-        return response()->json(array("success" => "1", "new_id" => $res->id), 200,
+        return response()->json(array("success" => "1", "new_id" => $article->id), 200,
             array('Content-Type:text/json;charset=UTF-8'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -83,7 +92,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -94,7 +103,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -105,11 +114,20 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
     {
-        //
+        DB::connection()->getPdo()->beginTransaction();
+        try {
+            $article = Article::find($id);
+            $article->delete();
+            DB::connection()->getPdo()->commit();
+            return response()->json(array("ok" => 1), 200, ['Content-Type:text/json;charset=UTF-8']);
+        } catch (\PDOException $e) {
+            DB::connection()->getPdo()->rollback();
+            return response()->json(array("ok" => 0), 500, ['Content-Type:text/json;charset=UTF-8']);
+        }
     }
 }

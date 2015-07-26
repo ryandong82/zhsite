@@ -15,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" href="./statics/css/boya/layout.css">
     <link rel="stylesheet" href="./statics/plugin/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./statics/css/boya/layout.css">
     <script type="text/javascript" src="./statics/plugin/jquery-2.1.3.min.js"></script>
     <script src="./statics/plugin/jquery.lazyload.min.js"></script>
     <script src="./statics/plugin/Bootstrap/js/bootstrap.min.js"></script>
@@ -33,11 +33,7 @@
     <link rel="stylesheet" type="text/css" href="./statics/plugin/Bootstrap/css/ie.css">
 
     <![endif]-->
-    <script>
-        $(document).ready(function () {
-            $("img.lazy").lazyload({threshold: 50});
-        });
-    </script>
+
 </head>
 <body>
 
@@ -103,7 +99,7 @@
                         <a href="{{URL::route('site.about')}}" class='color'>学院介绍</a>
                     </li>
                     <li>
-                        <a href="{{URL::route('site.colabor')}}" class='color'>课程介绍</a>
+                        <a href="{{URL::route('site.classes')}}" class='color'>课程介绍</a>
                     </li>
                     <li>
                         <a href="{{URL::route('site.teachers')}}" class='color'>师资介绍</a>
@@ -160,9 +156,15 @@
 <!-- 在线申请 -->
 <!-- Modal -->
 <!-- 返回顶部 -->
-
+@section('scripts')
 <script type="text/javascript" src="./statics/plugin/Bootstrap/js/bootstrap.min.js?version=3.3.2"></script>
 <script type="text/javascript" src="./statics/plugin/jquery.lazyload.min.js?version=1.9.1"></script>
 <script type="text/javascript" src="./statics/js/boya/home.js"></script>
+<script>
+    $(document).ready(function () {
+        $("img.lazy").lazyload({threshold: 50});
+    });
+</script>
+@show
 </body>
 </html>

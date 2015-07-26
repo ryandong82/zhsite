@@ -54,8 +54,11 @@ class ArticleSiteController extends Controller
         //
         $teachers = Teacher::topN(6);
         $article = Article::find($id);
+        $other_articles = Article::topN(6);
+        $categories_in_pane = ArticleCategory::all();
         $article->content = MyUtil::replace_reference_tag($article->content) ?: $article->content;
-        $resp = view('site.article', array('article'=>$article, 'teachers'=>$teachers));
+        $resp = view('site.article', array('article'=>$article, 'teachers'=>$teachers,
+            'other_articles'=>$other_articles, 'categories_in_pane' => $categories_in_pane));
         return $resp;
     }
 

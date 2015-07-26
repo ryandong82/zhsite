@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\UploadedRes;
+use App\Classes\MyUtil;
 use App\FooterPics;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminFooterPicsController extends Controller
 {
@@ -30,7 +33,6 @@ class AdminFooterPicsController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -38,8 +40,15 @@ class AdminFooterPicsController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $pics = new FooterPics();
+        $pics->mime = $request->file('myFile')->getMimeType();
+        $filename = 'footer_' . MyUtil::gen_file_name($request->file('myFile')->guessClientExtension());
+        $pics->filename = $filename;
+        $pics->save();
+        $request->file('myFile')->move($_SERVER['DOCUMENT_ROOT'] . "/statics/images/upload", $filename);
+        return $pics;
         //
     }
 
@@ -82,8 +91,19 @@ class AdminFooterPicsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        DB::connection()->getPdo()->beginTransaction();
+        try {
+            foreach ($request->request->get("picIdList") as $id) {
+                $footerPic = FooterPics::find($id);
+                $footerPic->delete();
+            }
+            DB::connection()->getPdo()->commit();
+            return response()->json(array("ok" => 1), 200, ['Content-Type:text/json;charset=UTF-8']);
+        } catch (\PDOException $e) {
+            DB::connection()->getPdo()->rollback();
+        }
+
     }
 }

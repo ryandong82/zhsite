@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,7 +20,10 @@ class ColaborController extends Controller
     public function index()
     {
         $teachers = Teacher::topN(6);
-        return response()->view('site.colabor', array('teachers'=>$teachers));
+        $articles = Article::all();
+        $categories_in_pane = ArticleCategory::all();
+        return response()->view('site.colabor', array('teachers'=>$teachers, 'other_articles'=>$articles,
+            'categories_in_pane' => $categories_in_pane));
     }
 
     /**

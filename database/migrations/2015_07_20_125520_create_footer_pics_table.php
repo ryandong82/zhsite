@@ -13,9 +13,10 @@ class CreateFooterPicsTable extends Migration
     public function up()
     {
         Schema::create('footer_pics', function (Blueprint $table) {
-            $table->string('id')->unique();
-            $table->text('filename');
-            $table->integer('mime');
+            $table->increments('id');
+            $table->string('filename');
+            $table->string('mime');
+            $table->timestamps();
         });
     }
 
@@ -27,5 +28,6 @@ class CreateFooterPicsTable extends Migration
     public function down()
     {
         //
+        Schema::drop('footer_pics');
     }
 }

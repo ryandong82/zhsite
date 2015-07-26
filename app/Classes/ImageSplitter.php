@@ -37,7 +37,13 @@ class ImageSplitter
 
     public function getPlainContent($res_id)
     {
-        $plain_content = preg_replace('/<img\ssrc="data:.*?;base64,.*?">/', "<img src=\"{@res_id=$res_id}\">", $this->content);
+        $index = 0;
+        $res_ids = is_array($res_id) ? $res_id : func_get_args();
+        $plain_content = preg_replace_callback('/<img\ssrc="data:.*?;base64,.*?">/', function ($matches) use ($res_ids, &$index) {
+            $result = "<img src=\"{@res_id=$res_ids[$index]}\">";
+            $index++;
+            return $result;
+        }, $this->content);
         return $plain_content;
     }
 
@@ -52,16 +58,17 @@ class ImageSplitter
     }
 
 
-
     public function __construct($content)
     {
         //parent::__construct();
         $this->content = $content;
-        $this->is_matched = preg_match('/<img\ssrc="data:(?P<contenttype>.*?);base64,(?P<content>.*?)">/',
+        $this->is_matched = preg_match_all('/<img\ssrc="data:(?P<contenttype>.*?);base64,(?P<content>.*?)">/',
             $content, $this->matches);
         if ($this->is_matched) {
             $this->mime_type = $this->matches['contenttype'];
-            $this->img = base64_decode($this->matches['content']);
+            foreach ($this->matches['content'] as $match) {
+                $this->img[] = base64_decode($match);
+            }
         }
     }
 }

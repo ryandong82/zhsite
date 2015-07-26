@@ -22,7 +22,7 @@
             <div class="item " data-item=2>
                 <a href="http://www.boyaceo.com/teachers-15-1.html"><img
                             data-original="./statics/images/boya/20141114023548320.jpg"
-                            src="./statics/images/boya/articlesloading.gif" class="img-responsive lazy center-block"></a>
+                            src="./statics/images/boya/loading.gif" class="img-responsive lazy center-block"></a>
             </div>
             <div class="item " data-item=3>
                 <a href="http://www.boyaceo.com?m=special&specialid=13"><img
@@ -101,7 +101,7 @@
                 <div class='single-tab text-muted'>
                     <span class="caret"></span>
                     <h4>
-                        <a href="{{URL::route("site.category", array('categoryId'=>$category, 'pageNo'=>1))}}"
+                        <a href="{{URL::route("site.category", array('categoryId'=>$article->category()->getResults()["id"], 'pageNo'=>1))}}"
                            class="blue">{{$article->category()->getResults()['category_name']}}</a>
                     </h4>
 
@@ -111,7 +111,7 @@
 
                     <div class="text-center">
                         <a href="{{URL::route("site.article", $article['id'])}}">
-                            <img data-original="/statics/images/upload/{{$article->file}}"
+                            <img data-original="/statics/images/upload/{{$article->file()}}"
                                  class='lazy content-img'></a>
                     </div>
                     <p class='single-tab-content'>
@@ -128,9 +128,6 @@
             @endforeach
         </dl>
         <!-- 加载更多豆腐块 -->
-        <button class='btn btn-block btn-default btn-sm single-tab-add' data-cid="998" data-page="8">
-            <span class='text-primary'>更多</span>
-        </button>
     </div>
     <!-- 选项卡内容［热点］ end-->
     <!-- 选项卡内容［＋＋］ start-->
@@ -153,7 +150,7 @@
 
                     <div class="text-center">
                         <a href="{{URL::route("site.article", $article['id'])}}">
-                            <img data-original="/statics/images/upload/{{App\Classes\MyUtil::get_res_file($article->content)}}"
+                            <img data-original="statics/images/upload/{{$article->file()}}"
                                     class='lazy content-img'></a>
                     </div>
                     <p class='single-tab-content'>
@@ -166,10 +163,6 @@
             </dd>
             @endforeach
         </dl>
-        <!-- 加载更多豆腐块 -->
-        <button class='btn btn-block btn-default btn-sm single-tab-add' data-cid="998" data-page="8">
-            <span class='text-primary'>更多</span>
-        </button>
     </div>
     @endforeach
     <!-- 选项卡内容［＋＋］ end-->

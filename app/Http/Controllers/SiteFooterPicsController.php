@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Teacher;
-use App\ArticleCategory;
-use App\Article;
+use App\FooterPics;
 
-class AboutController extends Controller
+class SiteFooterPicsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::topN(6);
-        $other_articles = Article::topN(6);
-        $categories_in_pane = ArticleCategory::all();
-        return response()->view('site.about', array('teachers' => $teachers, 'other_articles' => $other_articles,
-            'categories_in_pane' => $categories_in_pane));
+        //
+        return FooterPics::all();
     }
 
     /**
@@ -49,7 +44,7 @@ class AboutController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function show($id)
@@ -60,7 +55,7 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function edit($id)
@@ -71,7 +66,7 @@ class AboutController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function update($id)
@@ -82,7 +77,7 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
      */
     public function destroy($id)
