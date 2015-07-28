@@ -96,7 +96,7 @@
                         <a href="{{URL::route('site.index')}}" class='color'>首页</a>
                     </li>
                     <li>
-                        <a href="{{URL::route('site.about')}}" class='color'>学院介绍</a>
+                        <a href="{{URL::route('site.colabor')}}" class='color'>合作客户</a>
                     </li>
                     <li>
                         <a href="{{URL::route('site.classes')}}" class='color'>课程介绍</a>
@@ -105,7 +105,7 @@
                         <a href="{{URL::route('site.teachers')}}" class='color'>师资介绍</a>
                     </li>
                     <li>
-                        <a href="{{URL::route('site.colabor')}}" class='color'>合作客户</a>
+                        <a href="{{URL::route('site.about')}}" class='color'>学院介绍</a>
                     </li>
                     <li>
                         <a href="{{URL::route('site.contact')}}" class='color'>联系我们</a>
@@ -142,10 +142,10 @@
 
 <footer>
     <div class='container text-center text-muted'>
-        <p><a href="about">关于我们</a>&nbsp;｜&nbsp;<a
-                    href="contact">联系我们</a>&nbsp;｜&nbsp;<a
-                    href="http://www.boyaceo.com/list-32-1.html">友情链接</a>&nbsp;｜&nbsp;<a
-                    href="http://wpa.qq.com/msgrd?V=1&uin=2355899908">意见反馈</a>&nbsp;｜&nbsp;<a href="">网站地图</a></p>
+        <p><a href="{{URL::route('site.about')}}">关于我们</a>&nbsp;｜&nbsp;<a
+                    href="{{URL::route('site.about')}}">联系我们</a>&nbsp;｜&nbsp;<a
+                    href="#">友情链接</a>&nbsp;｜&nbsp;<a
+                    href="#">意见反馈</a>&nbsp;｜&nbsp;<a href="">网站地图</a></p>
 
         <p>联系电话：<span class="text-primary h4">010-58406365</span></p>
 

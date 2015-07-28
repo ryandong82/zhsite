@@ -107,7 +107,7 @@
                                     function (_item) {
                                         $li = $("<li></li>");
                                         $img = $("<img />");
-                                        $img.attr("data-original", "http://localhost/statics/images/upload/" + _item.filename);
+                                        $img.attr("data-original", "statics/images/upload/" + _item.filename);
                                         $img.css("width", 250);
                                         $img.css("height", 156);
                                         $img.addClass("lazy");

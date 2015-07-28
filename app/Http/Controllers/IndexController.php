@@ -24,7 +24,7 @@ class IndexController extends Controller
         //$article = Article::all();
         //return $article;
         //return ArticleCategory::find(1)->getForeignKey();
-        $article_categories = ArticleCategory::all();
+        $article_categories = ArticleCategory::query()->orderBy("ord_no")->get();
         //return $articles;
         $horzPics = MainHorizontalPics::all();
         $articles = Article::all();
