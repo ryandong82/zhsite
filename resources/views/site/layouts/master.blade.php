@@ -96,13 +96,13 @@
                         <a href="{{URL::route('site.index')}}" class='color'>首页</a>
                     </li>
                     <li>
-                        <a href="{{URL::route('site.colabor')}}" class='color'>合作客户</a>
-                    </li>
-                    <li>
                         <a href="{{URL::route('site.classes')}}" class='color'>课程介绍</a>
                     </li>
                     <li>
                         <a href="{{URL::route('site.teachers')}}" class='color'>师资介绍</a>
+                    </li>
+                    <li>
+                        <a href="{{URL::route('site.colabor')}}" class='color'>合作客户</a>
                     </li>
                     <li>
                         <a href="{{URL::route('site.about')}}" class='color'>学院介绍</a>
@@ -149,7 +149,7 @@
 
         <p>联系电话：<span class="text-primary h4">010-58406365</span></p>
 
-        <p>Copyright@2009-2014 boyaceo.com All RightReserved [京ICP备10037530号－１]</p>
+        <p>Copyright@2009-2014 zhonghebs.com All RightReserved [备案中]</p>
     </div>
 </footer>
 <!-- 页脚 　end-->
