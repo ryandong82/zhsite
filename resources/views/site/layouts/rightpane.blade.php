@@ -140,7 +140,7 @@
                 <h5>
                     <span class="bg-boya">{{$category["category_name"]}}</span>
                     <small class="more pull-right">
-                        <a href="{{URL::route('site.category', $category['id'])}}">more</a>
+                        <a href="{{URL::route('site.category', ['id'=>$category['id'], 'pageNo'=>1])}}">more</a>
                     </small>
                 </h5>
                 <div class="panel sidebar-right media-news">

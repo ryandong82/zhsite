@@ -17,7 +17,7 @@
     </p>
     <div class="row">
         <article>
-            <div id="editor" contenteditable="true">
+            <div id="editor">
                 <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
                             style="font-family:微软雅黑; font-weight:bold; font-size:12.0000pt; ">中和论坛</span><span
                             style="font-family:微软雅黑; font-weight:bold; font-size:12.0000pt; "></span>
@@ -81,49 +81,7 @@
                    style="text-indent:24.1000pt; line-height:19.0000pt; mso-line-height-rule:exactly; "><span
                             style="font-family:微软雅黑; font-size:11.0000pt; ">每年滚动推出，每月两到三次课程，每月周末（周五、六或周六、日）开课，企业持学习卡为凭证听课，学习卡两年有效。</span><span
                             style="font-family:微软雅黑; font-size:11.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:12.0000pt; ">收费标准</span><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:12.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:11.0000pt; ">“中和论坛”和“企业定制公开课”我们实行以下收费标准：</span><span
-                            style="font-family:微软雅黑; font-size:11.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:11.0000pt; ">会员收费标准</span><span
-                            style="font-family:微软雅黑; font-size:11.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; ">2.8万：20人/天（1400元/人/天）</span><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; ">4.8万：40人/天（1200元/人/天）</span><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; ">8.8万：80人/天（1100元/人/天）</span><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:19.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; ">非会员每人每天：1980元/天，3680元/两天</span><span
-                            style="font-family:微软雅黑; font-size:12.0000pt; "></span>
-                </p>
-                <p class="MsoNormal" style="line-height:20.0000pt; mso-line-height-rule:exactly; "><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; ">注：</span><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; "></span>
-                </p>
-                <p class="MsoNormal"
-                   style="text-indent:15.0000pt; mso-char-indent-count:1.5000; line-height:20.0000pt; mso-line-height-rule:exactly; ">
-                    <span style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; ">1)中和商学院企业学习卡，每次可多人参加，每人每听一天按一人次计算，有效期为两年。</span><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; "></span>
-                </p>
-                <p class="MsoNormal"
-                   style="margin-left:25.1000pt; mso-para-margin-left:1.4400gd; text-indent:-10.0000pt; mso-char-indent-count:-1.0000; line-height:20.0000pt; mso-line-height-rule:exactly; ">
-                    <span style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; ">2)以上费用均含培训所需资料费及早餐、午餐和停车费用，每次开课前贵单位需提供参会学员名单，最终结算以学员签到记录为准。内训及国学游学视项目具体情况而定。</span><span
-                            style="font-family:微软雅黑; font-weight:bold; font-size:10.0000pt; "></span>
-                </p>
+                </p>                
 
             </div>
         </article>

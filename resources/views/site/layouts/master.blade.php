@@ -6,7 +6,8 @@
         中和商学院 - @yield('title')
     </title>
     <meta name="Keywords"
-          content="中和商学院">
+          content="中和,中和商学院,中和论坛,商学院，国企培训，央企培训，高端师资,高端讲座，企业内训,标杆学习,国学游学,企业培训">
+	  
     <meta name="Description"
           content="中和商学院”秉承以推动企业发展为己任，汇聚全球华人领域最受企业管理者欢迎的专家学者、著名企业家及国家相关政策参与和解读的专家，从宏观经济、企业战略、领导管理、投资融资、人文视野等领域，纵论领先之道，共同传承管理精髓，引领商界创新。 进而驾驭全球化商业挑战，推动企业持续快速成长与发展。">
     <link rel="shortcut icon" href="./statics/images/boya/logo.ico">
