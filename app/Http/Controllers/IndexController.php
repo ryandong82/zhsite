@@ -27,7 +27,7 @@ class IndexController extends Controller
         $article_categories = ArticleCategory::query()->orderBy("ord_no")->get();
         //return $articles;
         $horzPics = MainHorizontalPics::all();
-        $articles = Article::all();
+        $articles = Article::topN(15);
 //        foreach ($articles as $article) {
 //            $article["file"] = MyUtil::get_res_file($article->content);
 //        }

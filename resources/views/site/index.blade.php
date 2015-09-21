@@ -128,7 +128,7 @@
         @foreach($categories as $category)
             <div class="tab-list hidden">
                 <dl class="row">
-                    @foreach($category->articles()->getResults() as $article)
+                    @foreach($category->articlesTopN(15)->getResults() as $article)
                         <dd class="col-boya-2 col-sm-4  col-md-3 col-xs-12">
                             <div class='single-tab text-muted'>
                                 <span class="caret"></span>

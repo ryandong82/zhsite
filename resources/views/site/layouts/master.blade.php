@@ -144,13 +144,13 @@
 <footer>
     <div class='container text-center text-muted'>
         <p><a href="{{URL::route('site.about')}}">关于我们</a>&nbsp;｜&nbsp;<a
-                    href="{{URL::route('site.about')}}">联系我们</a>&nbsp;｜&nbsp;<a
+                    href="{{URL::route('site.contact')}}">联系我们</a>&nbsp;｜&nbsp;<a
                     href="#">友情链接</a>&nbsp;｜&nbsp;<a
                     href="#">意见反馈</a>&nbsp;｜&nbsp;<a href="">网站地图</a></p>
 
         <p>联系电话：<span class="text-primary h4">010-58406365</span></p>
 
-        <p>Copyright@2009-2014 zhonghebs.com All RightReserved [备案中]</p>
+        <p>Copyright@2009-2014 zhonghebs.com All RightReserved [京ICP备15045033号]</p>
     </div>
 </footer>
 <!-- 页脚 　end-->
